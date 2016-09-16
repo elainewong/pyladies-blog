@@ -5,7 +5,7 @@ subtitle: Women Who Love Coding in Python
 title: PyLadies
 post_limit: 1
 date_format: "%B %d, %Y"
-posts_url: /blog/<title>/
+posts_url: /<title>/
 analytics: UA-36930002-1
 feed: true
 social:
