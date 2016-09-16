@@ -3,6 +3,8 @@ python: 2.7
 branches:
   only:
   - master
+before_install:
+  - openssl aes-256-cbc -K $encrypted_dc3871f40484_key -iv $encrypted_dc3871f40484_iv -in pyladies_deploy.enc -out super_secret.txt -d
 install:
   - pip install -r requirements.txt
 script:
