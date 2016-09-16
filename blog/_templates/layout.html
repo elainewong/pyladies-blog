@@ -4,34 +4,43 @@
 <head>
     {% include 'page.header.html' %}
     
-    {% if site.title %}<title>{% if title %}{{ title }} – {% endif %}{{ site.title }}{% if not title and site.subtitle %} – {{ site.subtitle }}{% endif %}</title>{% endif %}
+    {% if site.title %}<title>{% if title %}{{ title }} &ndash; {% endif %}{{ site.title }}{% if not title and site.subtitle %} &ndash; {{ site.subtitle }}{% endif %}</title>{% endif %}
 </head>
 
 <body>
     <div id="container">
-        <div id="sidebar">
-            <h1 id="title"><a href="{{ get_url() }}">{{ site.title }}</a></h1>
-            {% if site.subtitle %}<h2 id="subtitle">{{ site.subtitle }}</h2>{% endif %}
-            
-            <ul id="nav">
+        <div id="nav">
+            <ul>
                 <li><a href="{{ get_url() }}">Blog</a></li>
                 <li><a href="{{ get_url('archives/') }}">Archives</a></li>
-                <li><a href="{{ get_url('feed.xml') }}">Feed</a></li>
+                {% if site.feed %}<li><a href="{{ get_url('feed.xml') }}">Feed</a></li>{% endif %}
             </ul>
             
-            <p>This is a convenient place to put a quick blurb about yourself and the purpose of this site.</p>
-            <p>This is also a good place to list any other sites you are on like <a href="https://github.com/">GitHub</a> and <a href="https://twitter.com/">Twitter</a>.</p>
-            <p><code>/_templates/layout.html#L22-24</code></p>
-            
-            <div id="footer">
-                <p>{% if site.author %}© {{ none|date('%Y') }} {{ site.author }} – {% endif %}powered by <a href="http://mynt.uhnomoli.com/">mynt</a></p>
-            </div>
+            {% if site.social.values()|sort(true)|first %}
+                <ul id="social">
+                    {% if site.social.dribbble %}<li><a href="http://dribbble.com/{{ site.social.dribbble }}"><img src="{{ get_asset('images/social/dribbble.png') }}" width="16" height="16" alt="Dribbble"></a></li>{% endif %}
+                    {% if site.social.facebook %}<li><a href="https://www.facebook.com/{{ site.social.facebook }}"><img src="{{ get_asset('images/social/facebook.png') }}" width="16" height="16" alt="Facebook"></a></li>{% endif %}
+                    {% if site.social.github %}<li><a href="https://github.com/{{ site.social.github }}"><img src="{{ get_asset('images/social/github.png') }}" width="16" height="16" alt="GitHub"></a></li>{% endif %}
+                    {% if site.social.google_plus %}<li><a href="https://plus.google.com/{{ site.social.google_plus }}"><img src="{{ get_asset('images/social/google-plus.png') }}" width="16" height="16" alt="Google+"></a></li>{% endif %}
+                    {% if site.social.lastfm %}<li><a href="http://www.last.fm/user/{{ site.social.lastfm }}"><img src="{{ get_asset('images/social/lastfm.png') }}" width="16" height="16" alt="Last.fm"></a></li>{% endif %}
+                    {% if site.social.stack_overflow %}<li><a href="http://stackoverflow.com/users/{{ site.social.stack_overflow }}"><img src="{{ get_asset('images/social/stack-overflow.png') }}" width="16" height="16" alt="Stack Overflow"></a></li>{% endif %}
+                    {% if site.social.steam %}<li><a href="http://steamcommunity.com/id/{{ site.social.steam }}"><img src="{{ get_asset('images/social/steam.png') }}" width="16" height="16" alt="Steam"></a></li>{% endif %}
+                    {% if site.social.twitter %}<li><a href="https://twitter.com/#!/{{ site.social.twitter }}"><img src="{{ get_asset('images/social/twitter.png') }}" width="16" height="16" alt="Twitter"></a></li>{% endif %}
+                </ul>
+            {% endif %}
         </div>
         
-        {% block breadcrumbs %}{% endblock %}
+        <div id="header">
+            <h1><a href="{{ get_url() }}">{{ site.title }}</a></h1>
+            {% if site.subtitle %}<h2>{{ site.subtitle }}</h2>{% endif %}
+        </div>
         
         <div id="content">
             {% block content %}{% endblock %}
+        </div>
+        
+        <div id="footer">
+            <p>{% if site.author %}Copyright &copy; {{ none|date('%Y') }} {{ site.author }} &ndash; {% endif %}powered by <a href="http://mynt.mirroredwhite.com/">mynt</a></p>
         </div>
     </div>
 </body>

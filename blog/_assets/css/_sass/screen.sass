@@ -2,493 +2,484 @@
 
 
 //
+// WEBKIT SCROLLBARS
+//
+::-webkit-scrollbar
+    width: 8px
+    height: 8px
+
+::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment
+    display: none
+    
+    width: 0px
+    height: 0px
+
+::-webkit-scrollbar-track:corner-present, ::-webkit-scrollbar-track-piece, ::-webkit-scrollbar-corner, ::-webkit-resizer
+    background-color: #77805F
+
+::-webkit-scrollbar-thumb:vertical, ::-webkit-scrollbar-thumb:horizontal
+    background-color: #5F664C
+
+
+//
 // RESET
 //
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video
-    vertical-align: baseline
-    
+*
     margin: 0px
     padding: 0px
     
     border-width: 0px
-    
-    font: inherit
-    font-size: 100%
-
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section
-    display: block
-
-blockquote, q
-    quotes: none
-
-blockquote:before, blockquote:after,
-q:before, q:after
-    content: ''
-    content: none
-
-ol, ul
-    list-style: none
-
-table
-    border-collapse: collapse
+    outline: invert none 0px
 
 
 //
-// BASE
+// BASE ELEMENTS
 //
 body
-    background:
-        color: $bg
-        image: url('../images/bg.png')
-        position: left top
-        repeat: repeat
+    background-color: #FAFAFA
     
-    color: $fg
+    color: #404040
     font:
-        family: 'Ubuntu', sans-serif
-        size: 13px
-    line-height: $baseline
+        family: 'Arial', 'Helvetica', sans-serif
+        size: 14px
 
 blockquote, dl, ol, p, pre, table, ul
-    margin: $baseline 0px
+    margin: 15px 0px 15px 0px
 
 blockquote
     overflow: hidden
     
-    padding: 0px $baseline
+    margin-left: 35px
+    padding: 0px 15px 0px 15px
     
-    background-color: $sbg-l
+    background-color: #F2F2F2
+    border: 1px solid #D9D9D9
+    +box-shadow(0px 0px 0px 2px #F7F7F7)
+    
+    color: #737373
+    font-style: italic
 
-dl.horizontal
-    & > dd
-        margin-left: 65px
-        
-        & + dt
-            margin-top: $baseline
-            
-            & + dd
-                margin-top: $baseline
+dd, dt
+    & > :first-child
+        margin-top: 0px
     
-    & > dt
-        float: left
-        
-        width: 50px
+    & > :last-child
+        margin-bottom: 0px
+
+dd
+    margin:
+        top: 10px
+        left: 140px
+    
+    & + &
+        margin-top: 5px
+    
+    dt:first-child + &
+        margin-top: 0px
+
+dl
+    overflow: hidden
+    
+    dl
+        margin:
+            top: 0px
+            bottom: 0px
+
+dt
+    clear: left
+    float: left
+    
+    margin-top: 10px
+    
+    width: 125px
+    
+    font-weight: bold
+    text-align: right
+    
+    & + &
+        margin-top: 5px
+    
+    &:first-child
+        margin-top: 0px
 
 h1, h2, h3, h4, h5, h6
-    color: $fg-l
+    margin: 15px 0px 15px 0px
+    
+    color: #0D0D0D
+    text-shadow: 1px 1px 0px #CCCCCC
     font:
+        family: 'Georgia', serif
         style: italic
         weight: normal
+    
+    a
+        color: inherit
+        
+        &:hover
+            text-decoration: none
 
-h1, h2
-    line-height: $baseline * 2
+h2, h3
+    padding-bottom: 5px
+    
+    border-bottom: 1px solid #E6E6E6
+
+h4, h5, h6
+    font:
+        family: 'Arial', 'Helvetica', sans-serif
+        style: normal
+        weight: bold
+    text-transform: uppercase
+
+h5, h6
+    font-size: 12px
 
 h1
     font-size: 28px
 
 h2
-    font-size: 22px
+    margin-top: 25px
+    
+    font-size: 24px
 
 h3
-    font-size: 18px
+    font-size: 20px
 
 h4
-    font-size: 16px
-
-h5
     font-size: 14px
 
 h6
-    font-size: 12px
+    color: #595959
+    text-shadow: 1px 1px 0px #D9D9D9
 
 li
-    position: relative
+    margin-top: 3px
     
     ol > &:before, ul > &:before
-        position: absolute
+        padding-right: 8px
         
-        color: $hlt-l
+        color: #1A1A1A
     
     ol > &
-        left: 22px
-        
-        margin-right: 22px
-        
         counter-increment: item
         
         &:before
-            left: -22px
-            
-            width: 17px
-            
-            text-align: right
-            
             content: counter(item, decimal) '.'
     
-    ul > &
-        left: 12px
-        
-        margin-right: 12px
-        
-        &:before
-            left: -12px
-            
-            content: '\2022'
+    ul > &:before
+        content: '\2022'
     
-    ul.unstyled > &
-        position: static
-        left: auto
+    ul.unstyled > &:before
+        padding-right: 0px
         
-        margin-right: 0px
-        
-        &:before
-            position: static
-            left: auto
-            
-            content: none
+        content: none
 
 ol, ul
+    margin-left: 35px
     list-style:
         image: none
         position: inside
         type: none
     
     ol, ul
-        margin: 0px
-        margin-left: 20px
+        margin:
+            top: 0px
+            bottom: 0px
 
 ol
     counter-reset: item
 
 p
+    line-height: 20px
     text-align: justify
 
-pre
-    padding: 0px 3px
-    
-    background-color: $sbg-l
-    
-    font-family: 'Envy Code R', 'Ubuntu Mono', monospace
-
-table
-    background-color: $sbg-l
-    border-collapse: collapse
-
-td, th
-    padding: $baseline / 2
-
-td
-    +compact-children
-    
-    tr:nth-child(2n) > &
-        background-color: $bg-d
-
-th
-    background-color: $sbg
-    
-    color: $hlt-l
+pre, code
     font:
-        style: italic
-        weight: normal
-    text-align: left
+        family: 'Envy Code R', monospace
+        size: 10pt
 
-a
-    +transition(color 0.2s)
+pre
+    padding: 5px
     
-    color: $hlt
-    text-decoration: none
+    background-color: #2B2E23
     
-    &:hover
-        color: $hlt-l
-
-code
-    padding: 0px 3px
+    color: #B2B99E
     
-    background-color: $sbg-l
-    
-    color: $fg-d
-    font-family: 'Envy Code R', 'Ubuntu Mono', monospace
-    line-height: 17px
-    white-space: pre
-    
-    pre &
+    code
         padding: 0px
         
         background-color: transparent
+        border-width: 0px
+        +box-shadow(none)
         
-        color: $pygments-fg
-        line-height: $baseline
+        color: inherit
+
+table
+    border: 1px solid #D9D9D9
+    border-bottom-width: 0px
+    border-collapse: collapse
+    +box-shadow(0px 0px 0px 2px #F7F7F7)
+
+td, th
+    padding: 10px
     
-    table &
-        background-color: $sbg
-
-em
-    font-style: italic
-
-img
-    vertical-align: bottom
+    border-bottom: 1px solid #D9D9D9
+    border-left: 1px dotted #D9D9D9
     
-    a > &
-        padding: 5px
-        
-        background-color: $sbg-l
+    &:first-child
+        border-left-width: 0px
+    
+    & > :first-child
+        margin-top: 0px
+    
+    & > :last-child
+        margin-bottom: 0px
+    
+    & > *
+        margin: 10px 0px 10px 0px
+    
+    tbody tr:nth-child(2n) &
+        background-color: #F2F2F2
 
-strong
+th
     font-weight: bold
+    text-align: center
+    
+    tbody &
+        text-align: right
+    
+    thead &
+        background-color: #F2F2F2
 
-sub, sup
-    font-size: 11px
-    line-height: 0px
+ul
+    &.unstyled
+        margin-left: 0px
 
-sub
-    vertical-align: sub
+a
+    color: #5E8000
+    text-decoration: none
+    
+    &:hover
+        text-decoration: underline
 
-sup
-    vertical-align: super
+code
+    padding: 0px 2px 0px 2px
+    
+    background-color: #E6E6E6
+    border: 1px solid #D9D9D9
+    +box-shadow(0px 0px 0px 2px #F2F2F2)
+    
+    white-space: pre
+
+small
+    display: block
+    
+    color: #8C8C8C
+    font:
+        size: 10px
+        style: italic
+    text-transform: uppercase
+    
+    a
+        color: #4D4D4D
 
 
 //
-// LAYOUT
+// EVERYTHING ELSE
 //
 #container
-    margin-top: $baseline
+    margin: 0px auto 0px auto
     
-    width: $container
+    width: 900px
 
-#sidebar
-    position: fixed
-    top: 0px
-    bottom: 0px
-    left: 0px
-    
-    padding: 0px $baseline
-    
-    width: $sidebar
-
-#title
-    margin-top: $baseline
-
-#subtitle
-    line-height: $baseline
-
+// NAV
 #nav
-    margin-top: $baseline
-
-#footer
-    position: absolute
-    bottom: 0px
-    left: 0px
+    +clearfix
     
-    padding: 0px $baseline
-    
-    width: $sidebar
-
-#breadcrumbs
-    position: fixed
-    top: $baseline
-    left: $offset
-    
-    margin: 0px
-    padding: $baseline / 2
-    
-    width: $content - $baseline
-
-#content
-    +compact-children
-    
-    margin: $baseline 0px
-    margin-left: $offset
-    
-    width: $content
-    
-    #breadcrumbs + &
-        margin-top: $baseline * 4
-
-.post-list
-    & > .post-title, & > .post-meta
-        padding: $baseline / 2
-    
-    & > .post-title
-        padding-bottom: 0px
+    li
+        float: left
         
-        line-height: $baseline
+        margin-top: 10px
+        
+        &:before
+            padding-right: 0px
+            
+            content: ''
+        
+        & + li
+            margin-left: 8px
+            padding-left: 8px
+            
+            border-left: 1px solid #D9D9D9
     
-    & > .post-meta
-        padding-top: 0px
-
-.post-title, .post-meta
-    padding: 12px
-
-.post-title
-    padding-bottom: 0px
+    ul
+        float: left
+        
+        margin: 0px
     
-    line-height: 30px
-
-.post-meta
-    margin-bottom: $baseline
-    padding-top: 0px
+    a, img
+        display: block
     
-    line-height: $baseline
+    a
+        color: #333333
+        font:
+            size: 12px
+            weight: bold
+        text-transform: uppercase
+        
+        &:hover
+            color: #000000
+            text-decoration: none
+    
+    img
+        +opacity(0.75)
+        
+        &:hover
+            +opacity(1)
+    
+    #social
+        float: right
+        
+        li
+            margin-top: 9px
 
+// HEADER
+#header
+    margin: 40px 0px 40px 0px
+    
+    h1, h2
+        margin: 0px
+        padding: 0px
+    
+    h1
+        font:
+            size: 36px
+            weight: bold
+    
+    h2
+        border-bottom-width: 0px
+        
+        color: #8C8C8C
+        font-weight: normal
+        text:
+            shadow: none
+            transform: none
+
+// CONTENT
+div.item
+    & + &
+        div.header h1
+            margin-top: 25px
+            padding-top: 25px
+            
+            border-top: 1px solid #E6E6E6
+    
+    div.header
+        h1, h2
+            margin: 0px
+            padding: 0px
+        
+        h2
+            border-bottom-width: 0px
+            
+            color: #8C8C8C
+            font:
+                family: 'Arial', 'Helvetica', sans-serif
+                size: 12px
+                weight: normal
+            text:
+                shadow: none
+                transform: uppercase
+            
+            a
+                color: #4D4D4D
+                
+                &:hover
+                    text-decoration: underline
+            
+            span
+                position: relative
+                top: -2px
+    
+    div.footer
+        font:
+            size: 12px
+            weight: bold
+        text-transform: uppercase
+
+div.pagination
+    margin-top: 25px
+    
+    border-top: 1px dotted #D9D9D9
+    
+    p
+        font:
+            size: 12px
+            style: italic
+            weight: bold
+        text:
+            align: center
+            transform: uppercase
+    
+    a
+        color: #4D4D4D
+
+dl.archives
+    & > dt a
+        color: #4D4D4D
+        font:
+            size: 18px
+            style: italic
+        line-height: 18px
+    
+    dd
+        margin-left: 75px
+    
+    dt
+        width: 50px
+        
+        color: #8C8C8C
+        font:
+            size: 12px
+            style: italic
+            weight: normal
+        text-transform: uppercase
+    
+    small
+        margin-top: 2px
+        
+        span
+            position: relative
+            top: -1px
+
+// FOOTER
+#footer
+    margin: 40px 0px 15px 0px
+    
+    font-size: 12px
+    color: #737373
+    text-transform: uppercase
+
+// PYGMENTS
 div.code
-    margin: $baseline 0px
+    margin: 15px 0px 15px 0px
+    
+    pre, table
+        margin: 0px
+    
+    table, td
+        border-width: 0px
+    
+    table
+        +box-shadow(none)
+    
+    td
+        padding: 0px
     
     & > div
         overflow: auto
         
-        max-height: $baseline * 27
-
-.highlighttable
-    margin: 0px
-
-.linenodiv, .highlight
-    & > pre
-        margin: 0px
-
-.archives, .archives-records
-    @extend dl.horizontal
-
-.archives
-    padding: $baseline / 2
-
-.archives-records
-    margin: 0px
-    padding: 0px
-
-
-//
-// STYLE
-//
-#sidebar
-    background:
-        color: $sbg
-        image: url('../images/sbg.png')
-        position: left top
-        repeat: repeat
+        background-color: #2B2E23
     
-    font-style: italic
-
-#title
-    +inverted-links
-    
-    font:
-        family: 'Ubuntu Mono', sans-serif
-        size: 36px
-    
-#subtitle
-    color: $fg-d
-    font-size: 16px
-
-#nav
-    @extend ul.unstyled
-    
-    font:
-        family: 'Ubuntu Mono', sans-serif
-        style: normal
-    text-transform: uppercase
-
-#footer
-    font:
-        size: 11px
-        style: normal
-    text-transform: uppercase
-
-#breadcrumbs
-    @extend ul.unstyled
-    
-    background-color: $sbg
-    
-    color: $fg-d
-    font-family: 'Ubuntu Mono', sans-serif
-    font-style: italic
-    
-    & > li
-        float: left
-        
-        &:after
-            padding: 0px 6px
-            
-            color: $fg
-            font-style: normal
-            
-            content: '\203A'
-        
-        &:last-child:after
-            padding: 0px
-            
-            content: none
-
-.post-list
-    & > .post-title
-        font-size: 16px
-    
-    & > .post-meta
-        +inverted-links
-        
-        font-size: 10px
-
-.post-title, .post-meta
-    background-color: $sbg-l
-
-.post-title
-    font-size: 24px
-
-.post-meta
-    +post-meta
-    
-    font-size: 11px
-
-div.code
-    & > div
-        background-color: $sbg-l
-
-.highlighttable
-    background-color: transparent
-
-.linenos
-    background-color: $sbg
-    
-    color: $fg-d
-
-.linenodiv, .highlight
-    & > pre
-        padding: 0px
-        
-        background-color: transparent
-
-.archives
-    background-color: $sbg-l
-    
-    font-style: italic
-    text-transform: uppercase
-
-.archives-year
-    +inverted-links
-    
-    font-size: 18px
-
-.archives-post-date
-    color: $fg-d
-    font-size: 12px
-
-.archives-post-title
-    text-transform: none
-
-.archives-post-tags
-    +inverted-links
-    +post-meta
-    
-    font-size: 10px
+    td.linenos
+        pre
+            background-color: #3C4030
