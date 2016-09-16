@@ -9,3 +9,5 @@ script:
   - make check
   - make generate
   - ./test_www.py
+notifications:
+  email: false
