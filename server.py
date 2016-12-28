@@ -7,6 +7,7 @@ import os
 
 from SimpleHTTPServer import SimpleHTTPRequestHandler
 from BaseHTTPServer import HTTPServer
+from subprocess import call
 
 
 class RootedHTTPServer(HTTPServer):
@@ -32,7 +33,7 @@ class RootedHTTPRequestHandler(SimpleHTTPRequestHandler):
         return path
 
 
-def test(HandlerClass=RootedHTTPRequestHandler, ServerClass=RootedHTTPServer):  # NOQA
+def serve(HandlerClass=RootedHTTPRequestHandler, ServerClass=RootedHTTPServer):  # NOQA
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--port', '-p', default=8000, type=int)
@@ -47,5 +48,10 @@ def test(HandlerClass=RootedHTTPRequestHandler, ServerClass=RootedHTTPServer):  
     print "Serving HTTP on", sa[0], "port", sa[1], "..."
     httpd.serve_forever()
 
+
+def generate():
+    call(['mynt', 'gen', '-f', 'blog', '_site'])
+
 if __name__ == '__main__':
-    test()
+    generate()
+    serve()
