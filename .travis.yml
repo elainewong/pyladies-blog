@@ -3,13 +3,18 @@ python: 2.7
 branches:
   only:
   - master
-before_install:
-  - openssl aes-256-cbc -K $encrypted_dc3871f40484_key -iv $encrypted_dc3871f40484_iv -in pyladies_deploy.enc -out super_secret.txt -d
 install:
-  - pip install -r requirements.txt
+- pip install -r requirements.txt
 script:
-  - make check
-  - make generate
-  - ./test_www.py
+- make generate
+- make test
+deploy:
+  provider: heroku
+  strategy: git
+  app: pyladies-blog
+  api_key:
+    secure: DLYO6JjDXpClIG25G7R/mvVmdZ7LOXvM8XifTDNDv1kvu0XSWA5CJK+UGLrRbybNNZS9x/7zxeIu7wWOiprn2gom1unYxpiTo/mIXR73wgk6DMitFDodKpNjv6FvE3zr6KXKl0ZSpVLTHZE4GzPRj8TjHcg7nABGtNsFvGgKGk43dWl6LRoAMVPFs4i7LNmWtUk42iGJejNszgsCO+FbLjBG0LwCUjf0QMqWfN39YIOG8Du8gKowTKA5WMPdExo3NlnNwxvda1KXuw6N75g11UjRnVPMwChlq4wwiGCQln5q+9xeU8R9PsMeS10A3LKVLe2i9nkmnmJaAdEL/CbYbNT4+x3TEvFwjIY149NeHMXgiVO4TZl6zsxp/o7LHhummhQu6gsHansVdVH16PQi6zuuv1VVWGBbbOWttiuk0KEszqEN8bAKpAiHdaaxM3Ydvyouhx61YFKfczhDnMCgxki1aTfxrrTdIC3LW69cLXiTVGpUociyY+VXlw5GRAgJa2Z/Afk0PfFoDTieX3iCgvcywW0BHjldXuCpuEaMBuSCuru7wwOUiVeZnOmEa3zlnkhgBcBP5RHV/C/bGRUXi3WN8/ehh6gT0/DCo6U7olHAnhgEwcaCNUz/FAJVOoiEEFlezsIkrLvfN1RJMEkeUS0OsE/1L875RH+riv8MDMM=
 notifications:
   email: false
+  slack:
+    secure: tDRDrjVyR3EeJMobDyrz14iShZcgUmBPFldh3pvqzMERBgixYZqiMg0NOQ9Pl9rPGuDACX9eBcIgaafEFeypId9SnKe3VdL+c7A0KVD3SiBPRNAfA+6d0PKePI2TLBMwNviWHgEWI3RRd9yjVnUKkNw3TCCBMnNLwyUPmObeOJVTXNEJ6EkMTcPSxN/5/oqMDAhtFHItXrwigNHm4p0LP7ocyaTL3FbzrJ4Ahvy9KCBXKk1aaqBNZJBp30jma9WAdz9vuyOxhMovE3vKZj5GPFYrQ9xoseaS4rIYp983eJgXXQXyo1UHJ59Tnu8AqydF8cILp6K2QUK3ZN+jm8hPiQyILI2VjgmRXgqTXMsr506+2vzbJE5B15gHcfquF7nfAbjANc0ftXBqq2vBOqD2T0z3+rinyXeqLFO1oPGJvniw3DTTQLUJlZXrj1+Zwf77so0KigpARN7//cqTeugDuSV3UHHyGUQHHi2l7df4L+h+ZzQWV2/5uVLxCvrdRYkGIm/eHa0axeGIw4KyyZ5EenjAAYj2JBjYkSWakR2TlNbEijIiV84T8/ZJihSSMwnPHBJ4vNTCKzN52aBuWlsPanfuUYg2j9ecdzKqXB3q+8UgyF+4suExl9XFicIv5lI8dqBcbtTQbvk1WjP78EQKonEcm/sXlWXXWrFbMbqylcw=
