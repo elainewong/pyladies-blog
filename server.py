@@ -1,4 +1,5 @@
 #! /usr/bin/env python
+# Adapted from http://louistiao.me/posts/python-simplehttpserver-recipe-serve-specific-directory/
 
 import posixpath
 import argparse
