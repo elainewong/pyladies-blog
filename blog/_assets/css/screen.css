@@ -1398,3 +1398,36 @@ div.code td.linenos pre {
   margin-left:auto;
   margin-right:auto;
 }
+
+/* tags page - LR */
+.tags {
+  line-height: 36px;
+}
+
+.tag-count {
+  font-size: 90%;
+}
+
+.tag-badge {
+  font-weight: 200;
+  background-color: rgb(255, 100, 100);
+  border-radius: 5px;
+  padding: 5px;
+  margin: 4px;
+}
+
+.tag-badge a {
+  color: #fff;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+.tag-badge a:hover, .tag-badge a:focus {
+  color: #fff;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+.tag-badge:hover, .tag-badge:focus {
+  background-color: rgba(255, 100, 100, 0.8);
+}

@@ -26,7 +26,7 @@ class RootedHTTPRequestHandler(SimpleHTTPRequestHandler):
         if len(words) < 1:
             return words
         # don't edit if requesting any assets
-        if words[0] in ['assets', 'favicon.ico']:
+        if words[0] in ['assets', 'favicon.ico', 'tags', 'archives']:
             return words
         # if post url start with "/blog/",
         if words[0] == 'blog':
