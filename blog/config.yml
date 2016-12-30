@@ -11,6 +11,7 @@ feed: true
 social:
     github: http://github.com/pyladies
     google_plus: https://plus.google.com/communities/108807002736066163985
+    twitter: https://twitter.com/pyladies
 archive_layout: archive.html
 archives_url: /archives/
 jinja:
