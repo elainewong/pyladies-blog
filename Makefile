@@ -11,7 +11,7 @@ help:
 	@echo 'Usage:                                                                  '
 	@echo '   make generate                    generate the web site               '
 	@echo '   make clean                       remove the generated files          '
-	@echo '   make serve                       serve site at http://localhost:8000 '
+	@echo '   make serve                       serve site at http://localhost:8080 '
 	@echo '   make watch                       auto-regenerate after changes       '
 	@echo '   make test                        run the (simple) tests              '
 	@echo '                                                                        '
