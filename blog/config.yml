@@ -1,11 +1,11 @@
 base_url: /
-domain: pyladies.com
+domain: blog.pyladies.com
 author: A PyLady
 subtitle: Women Who Love Coding in Python
 title: PyLadies
 post_limit: 1
 date_format: "%B %d, %Y"
-posts_url: /<title>/
+posts_url: /<slug>/
 analytics: UA-36930002-1
 feed: true
 social:

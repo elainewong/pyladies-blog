@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-# Adapted from http://louistiao.me/posts/python-simplehttpserver-recipe-serve-specific-directory/
+# Adapted from http://louistiao.me/posts/python-simplehttpserver-recipe-serve-specific-directory/  # NOQA
 
 import posixpath
 import argparse
@@ -19,11 +19,29 @@ class RootedHTTPServer(HTTPServer):
 
 
 class RootedHTTPRequestHandler(SimpleHTTPRequestHandler):
+    # didn't want to bother with .htaccess finagling w/ Heroku
+    def redirect_url(self, words):
+        words = filter(None, words)
+        # just requesting "/"
+        if len(words) < 1:
+            return words
+        # don't edit if requesting any assets
+        if words[0] in ['assets', 'favicon.ico']:
+            return words
+        # if post url start with "/blog/",
+        if words[0] == 'blog':
+            words.pop(0)
+        # if post url has both title and slug (from old blog), e.g.
+        # /A-PyLadies-packed-PyCon-2015/pyladies-at-pycon, then
+        # redirect to just the slug
+        if len(words) == 2:
+            return [words[1]]
+        return words
 
     def translate_path(self, path):
         path = posixpath.normpath(urllib.unquote(path))
         words = path.split('/')
-        words = filter(None, words)
+        words = self.redirect_url(words)
         path = self.base_path
         for word in words:
             drive, word = os.path.splitdrive(word)
