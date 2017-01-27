@@ -44,7 +44,7 @@ WHAT YOU WILL GET IN RETURN?
 
 WAYS TO DONATE
 ---
-All of the following methods are tax-deductible with funds going to the [Python Software Foundation](https://www.python.org/psf-landing/), a 501(c)3 charitable organization.
+All of the following methods are tax-deductible with funds going to the [Python Software Foundation](https://www.python.org/psf-landing/), a 501c3 charitable organization.
 
 * Through our [donation page](https://psfmember.org/civicrm/contribute/transact?reset=1&id=6) (ideal for individuals)
 * Email me at jess@pyladies.com (ideal for companies or anyone needing a proper invoice, or individualized solutions)
